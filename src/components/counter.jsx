@@ -11,16 +11,26 @@ class Counter extends Component {
     //     fontWeight: 'bold'
     // }
 
+    //rendering list
+
     // renderTags(){
     //     if(this.state.tags.length === 0) return <p>There are no tags</p>;
 
     //     return <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
     // }
 
-    //Handling Event
+     //binding event handler
+    //  constructor(){
+    //      super();
+    //      this.handleIncrement = this.handleIncrement.bind(this);
+    //  }
 
-    handleIncrement(){
-        console.log('Increment Clicked',this);
+    //event handler
+    //we use arrow function instead of bind
+
+    handleIncrement = product =>{
+        console.log(product);
+        this.setState({ count: this.state.count + 1 })
     }
 
     render() { 
@@ -31,10 +41,10 @@ class Counter extends Component {
 
             <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
             <button 
-                onClick={this.handleIncrement} 
-                className="btn btn-secondary btn-sm"
+            onClick={() => this.handleIncrement({id:1})} 
+            className="btn btn-secondary btn-sm"
             >
-                Increment
+            Increment
             </button>
  
             {/* {this.state.tags.length === 0 && 'Please create a new tag'}
